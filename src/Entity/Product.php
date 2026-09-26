@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\GetCollection;
@@ -32,6 +34,7 @@ use Vich\UploaderBundle\Mapping\Attribute as Vich;
         )
     ]
 )]
+#[ApiFilter(SearchFilter::class, properties: ['category.name' => 'exact'])]
 #[Vich\Uploadable]
 class Product
 {
